@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ball{
+            width: 953px;
+            border: solid 1px pink;
+        }
+        #ball>span{
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            margin: 20px;
+            line-height: 80px;
+        }
+        #ball>span:nth-child(7){
+            display: inline-block;
+            width: 130px;
+            height: 80px;
+            background-color: #ccc;
+            border-radius: 40%;
+            text-align: center;
+            font-size: 30px;
+            margin: 20px;
+            line-height: 80px;
+        }
+    </style>
+    <script src="/home/tarena/xiaofan/month03/web/day09/day09/js/jquery.min.js"></script>
+</head>
+<body>
+    <div id="ball">
+        <span>06</span>
+        <span>11</span>
+        <span>21</span>
+        <span>26</span>
+        <span>28</span>
+        <span>31</span>
+        <span>换一换</span>
+    </div>
+    <script>
+        /* $("span:last").css({"width":"130px","background-color":"#ccc"}); */
+        function create(a){
+            a.each(function(index,elem){
+                var num=Math.floor(Math.random()*31);
+                $(elem).text(num);
+            })   
+        }
+        $("span:last").on("click",function(){
+            // console.log("a")
+           create($("span:not(span:last)"))
+        })
+    </script>
+</body>
+</html>

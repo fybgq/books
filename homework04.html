@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            margin: 0;
+            padding: 0;
+        }
+        #tip{
+            list-style-type: none;
+            width: 320px;
+            border: 1px solid green;
+            overflow:hidden;
+            padding: 8px 8px;
+        }
+        #tip>li{
+            float: left;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        #tip li p{
+            margin: 7px 6px;
+        color: white;
+        }
+        #tip>.change{
+            float: right;
+            width: 50px;
+            height: 30px;
+            background-color: rgb(189, 184, 184);
+            border-radius: 30%;
+            padding: 0 5px;    
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+    <ul id="tip">
+        <li>
+            <p>10</p>
+        </li>
+        <li>
+            <p>10</p>
+        </li>
+        <li>
+            <p>10</p>
+        </li>
+        <li>
+            <p>10</p>
+        </li>
+        <li>
+            <p>10</p>
+        </li>
+        <li>
+            <p>10</p>
+        </li>
+        <li class="change">换一换</li>
+    </ul>
+    <script>
+        function num(target_lines){
+            var arrNum = [];
+            var count = 0;
+            // target_lines.each(function(index,elem){
+            //     var temp = Math.floor(Math.random()*31);
+            //     if(temp<10){
+            //         temp = "0"+temp;
+            //     }
+            //     $(elem).text(temp);
+            //     arrNum.push(temp)
+            // });
+            while(true)
+            {
+                console.log(arrNum.length);
+                var index = count;
+                console.log(index);
+                count++;
+                var temp = Math.floor(Math.random()*31);
+                if(temp<10){
+                    temp = "0"+temp;
+                };
+                console.log(temp);
+                console.log(estimate(temp,arrNum));
+                if(estimate(temp,arrNum)){
+                    $(target_lines[index]).text(temp);
+                    arrNum.push(temp);
+                }else{
+                    count--;
+                }
+                if(count==6)
+                    break
+            };
+        };
+        
+        function estimate(temp,arrNum){
+            for(var i=0;i<arrNum.length;i++){
+                if(temp==arrNum[i])return false;
+            }
+            return true;
+        }
+        
+        $(".change").on("click",function(){
+            num($("#tip>li:not(li:last)>p"))
+        });
+
+    </script>
+</body>
+</html>

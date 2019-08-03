@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #book{
+            width: 364px;
+            border: solid 1px #ccc;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .lleft{
+            float: left;
+            margin-left: 5px;
+        }
+        .rright{
+            float: right;
+            margin-right: 5px;
+        }
+        #whole{
+            margin: 30px 0px 10px 0px;
+            border: solid 0px red;
+            overflow: hidden;
+        }
+        img{
+            width: 91px;
+            height: 70px;     
+        }
+        #book>#whole>div{
+            float: left;
+            margin: 0;
+            padding: 0;
+            border: solid 0px red;
+        }
+        #book>#whole>div>div{
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+    <script src="/home/tarena/xiaofan/month03/web/day09/day09/js/jquery.min.js"></script>
+</head>
+<body>
+    <div id="book">
+        <div class="lleft">相关书籍</div>
+        <div class="rright">换一换</div>
+        <div id="whole">
+            <div>
+                <img src="/home/tarena/1905/month03/day08all/day08/imgs/bk0.jpg" alt="">
+                <div><a href="javascript:;">javascript经<br>典实例</a></div>
+                <div>shelleypow<br>er著</div>
+            </div>
+            <div>
+                <img src="/home/tarena/1905/month03/day08all/day08/imgs/bk1.jpg" alt="">
+                <div><a href="javascript:;">javascript高<br>效图形...</a></div>
+                <div>java图书</div>
+            </div>
+            <div>
+                <img src="/home/tarena/1905/month03/day08all/day08/imgs/bk2.jpg" alt="">
+                <div><a href="javascript:;">javascript学<br>习指南</a></div>
+                <div>鲍尔斯所<br>著作</div>
+            </div>
+            <div>
+                <img src="/home/tarena/1905/month03/day08all/day08/imgs/bk3.jpg" alt="">
+                <div><a href="javascript:;">javascript权<br>威指南</a></div>
+                <div>davidflana<br>gan著</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var arrBooks=[{url:"/home/tarena/1905/month03/day08all/day08/imgs/bk0.jpg",
+                    name:"javascript经<br>典实例",
+                    cls:"shelleypow<br>er著"},
+                    {url:"/home/tarena/1905/month03/day08all/day08/imgs/bk1.jpg",
+                    name:"javascript高<br>效图形...",
+                    cls:"java图书"},
+                    {url:"/home/tarena/1905/month03/day08all/day08/imgs/bk2.jpg",
+                    name:"javascript学<br>习指南",
+                    cls:"鲍尔斯所<br>著作"},
+                    {url:"/home/tarena/1905/month03/day08all/day08/imgs/bk3.jpg",
+                    name:"javascript权<br>威指南",
+                    cls:"davidflana<br>gan著"},
+                    {url:"/home/tarena/1905/month03/day08all/day08/imgs/bk4.jpg",
+                    name:"javascript权<br>威指南",
+                    cls:"davidflana<br>gan著"},
+                    {url:"/home/tarena/1905/month03/day08all/day08/imgs/bk5.jpg",
+                    name:"javascript权<br>威指南",
+                    cls:"davidflana<br>gan著"}];
+        $(".rright").on("click",function(){
+            html=""
+            var arr_Index=createindex(4)
+            for(var i=0;i<arr_Index.length;i++){
+                html+='<div>'
+                html+='<img src='+arrBooks[arr_Index[i]].url+' alt="">'
+                html+='<div><a href="javascript:;">'+arrBooks[arr_Index[i]].name+'</a></div>'
+                html+='<div>'+arrBooks[arr_Index[i]].cls+'</div>'
+                html+='</div>'
+                console.log(html)
+            }
+            $("#whole").html($(html));
+        })
+        function createindex(count){
+            arrIndex=[]
+            for(var i=0;i<count;i++){
+                var index=Math.floor(Math.random()*arrBooks.length);
+                arrIndex.push(index);
+            }
+            return arrIndex;
+        }
+    </script>
+</body>
+</html>
